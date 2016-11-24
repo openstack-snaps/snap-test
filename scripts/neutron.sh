@@ -8,8 +8,6 @@ snap list | grep -q neutron || {
     sudo snap install --edge neutron
 }
 
-sudo cp -r $BASE_DIR/etc/neutron/common/* /var/snap/neutron/common
-
 openstack user show neutron || {
     openstack user create --domain default --password neutron neutron
     openstack role add --project service --user neutron admin

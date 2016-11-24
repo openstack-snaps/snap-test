@@ -27,6 +27,8 @@ sudo glance.manage db_sync
 
 sudo systemctl restart snap.glance.*
 
+while ! nc -z localhost 9292; do sleep 0.1; done;
+
 openstack image show xenial || {
     [ -f $HOME/images/xenial-server-cloudimg-amd64-disk1.img ] || {
         mkdir -p $HOME/images

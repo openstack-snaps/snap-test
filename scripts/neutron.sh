@@ -25,11 +25,6 @@ openstack service show network || {
     done
 }
 
-openstack image show xenial || {
-    openstack image create --file ${HOME}/images/xenial-server-cloudimg-amd64-disk1.img \
-        --public --container-format=bare --disk-format=qcow2 xenial
-}
-
 sudo cp neutron.conf.d/* /var/snap/neutron/common/etc/neutron.conf.d/
 
 sudo neutron.manage db sync

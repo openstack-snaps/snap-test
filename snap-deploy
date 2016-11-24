@@ -7,7 +7,7 @@
 set -ex
 
 sudo apt update
-DEBIAN_FRONTEND='noninteractive' sudo apt install --yes python-openstackclient rabbitmq-server mysql-server memcached
+DEBIAN_FRONTEND='noninteractive' sudo apt install --yes python3-openstackclient rabbitmq-server mysql-server memcached
 
 SCRIPT=$(readlink -f $0)
 export BASE_DIR=$(dirname $SCRIPT)

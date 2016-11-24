@@ -14,6 +14,6 @@ export BASE_DIR=$(dirname $SCRIPT)
 
 scripts/database.sh
 scripts/keystone.sh
-scropts/nova.sh
+scripts/nova.sh
 scripts/neutron.sh
 scripts/glance.sh

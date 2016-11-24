@@ -25,10 +25,9 @@ openstack service show network || {
     done
 }
 
-sudo cp neutron.conf.d/* /var/snap/neutron/common/etc/neutron.conf.d/
+sudo cp $BASE_DIR/etc/neutron/common/* /var/snap/neutron/common
 
-sudo neutron.manage db sync
-sudo neutron.manage api_db sync
+sudo neutron.manage upgrade head
 
 sudo systemctl restart snap.neutron.*
 

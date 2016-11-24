@@ -21,9 +21,9 @@ openstack service show image || {
     done
 }
 
-sudo cp glance.conf.d/* /var/snap/glance/common/etc/glance.conf.d/
+sudo cp $BASE_DIR/etc/glance/common/* /var/snap/glance/common
 
-sudo glance.manage db sync
+sudo glance.manage db_sync
 
 sudo systemctl restart snap.glance.*
 

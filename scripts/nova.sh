@@ -30,6 +30,8 @@ sudo nova.manage api_db sync
 
 sudo systemctl restart snap.nova.*
 
+while ! nc -z localhost 8774; do sleep 0.1; done;
+
 openstack flavor show m1.tiny || openstack flavor create --id 1 --ram 512 --disk 1 --vcpus 1 m1.tiny
 openstack flavor show m1.small || openstack flavor create --id 2 --ram 2048 --disk 20 --vcpus 1 m1.small
 openstack flavor show m1.medium || openstack flavor create --id 3 --ram 4096 --disk 20 --vcpus 2 m1.medium

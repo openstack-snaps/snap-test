@@ -28,6 +28,11 @@ sudo glance.manage db sync
 sudo systemctl restart snap.glance.*
 
 openstack image show xenial || {
+    [ -f $HOME/images/xenial-server-cloudimg-amd64-disk1.img ] || {
+        mkdir -p $HOME/images
+        wget http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img \
+            -O ${HOME}/images/xenial-server-cloudimg-amd64-disk1.img
+    }
     openstack image create --file ${HOME}/images/xenial-server-cloudimg-amd64-disk1.img \
         --public --container-format=bare --disk-format=qcow2 xenial
 }

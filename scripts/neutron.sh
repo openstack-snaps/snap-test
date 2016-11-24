@@ -25,7 +25,7 @@ openstack service show network || {
     done
 }
 
-sudo cp $BASE_DIR/etc/neutron/common/* /var/snap/neutron/common
+sudo cp -r $BASE_DIR/etc/neutron/common/* /var/snap/neutron/common
 
 sudo neutron.manage upgrade head
 

@@ -33,5 +33,5 @@ while ! nc -z localhost 9696; do sleep 0.1; done;
 
 neutron net-show test || {
     neutron net-create test
-    neutron subnet-create test_subnet 192.168.222.0/24
+    neutron subnet-create subnet 192.168.222.0/24
 }

@@ -15,7 +15,7 @@ sudo aa-complain /usr/lib/libvirt/virt-aa-helper
 SCRIPT=$(readlink -f $0)
 export BASE_DIR=$(dirname $SCRIPT)
 
-scripts="database keystone nova neutron glance"
+scripts="database keystone nova neutron glance nova-hypervisor"
 
 for script in $scripts; do
     scripts/$script.sh

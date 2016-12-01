@@ -20,8 +20,10 @@ sudo ovs-vsctl --may-exist add-port br-ex dodgy-wiring0
 sudo ip link set dodgy-wiring1 up
 sudo ip link set dodgy-wiring0 up
 
-neutron net-create --provider:network_type=flat --provider:physical_network physnet1 \
-    --router:external ext_net
-neutron subnet-create --gateway 10.30.20.1 \
-    --dns-nameserver 10.30.20.1 --disable-dhcp \
-    ext_net 10.30.20.0/24
+neutron net-show ext_net || {
+    neutron net-create --provider:network_type=flat --provider:physical_network physnet1 \
+        --router:external ext_net
+    neutron subnet-create --gateway 10.30.20.1 \
+        --dns-nameserver 10.30.20.1 --disable-dhcp \
+        ext_net 10.30.20.0/24
+}

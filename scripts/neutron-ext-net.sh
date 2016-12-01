@@ -27,3 +27,9 @@ neutron net-show ext_net || {
         --dns-nameserver 10.30.20.1 --disable-dhcp \
         ext_net 10.30.20.0/24
 }
+
+neutron router-show provider-router || {
+    neutron router-create provider-router
+    neutron router-gateway-set provider-router ext_net
+    neutron router-interface-add provider-router test_subnet
+}

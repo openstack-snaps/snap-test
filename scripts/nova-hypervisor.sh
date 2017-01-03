@@ -11,7 +11,7 @@ snap list | grep -q "^nova-hypervisor\s" || {
 sudo cp -r $BASE_DIR/etc/nova-hypervisor/common/* /var/snap/nova-hypervisor/common
 
 for i in `snap interfaces | grep "^-" | awk '{ print $2 }' | cut -d : -f 2 `; do
-    sudo snap connect nova-hypervisor:$i ubuntu-core:$i
+    sudo snap connect nova-hypervisor:$i core:$i
 done
 
 # Needs support in snap.openstack for perms on directories created.

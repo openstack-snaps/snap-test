@@ -17,6 +17,8 @@ export BASE_DIR=$(dirname $SCRIPT)
 
 scripts="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
 
+sudo snap install core
+
 for script in $scripts; do
     scripts/$script.sh
 done

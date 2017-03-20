@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -x
+
+snaps="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
+
+for snap in $snaps; do
+    snap remove $snap
+done
+
+sudo apt-get --yes remove --purge *mysql\*
+sudo apt-get --yes autoremove
+sudo apt-get --yes autoclean

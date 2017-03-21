@@ -8,7 +8,8 @@ snap list | grep -q glance || {
     sudo snap install --edge glance
 }
 
-sudo cp -r $BASE_DIR/etc/glance/common/* /var/snap/glance/common
+while [ ! -d /var/snap/glance/common/etc/glance/ ]; do sleep 0.1; done;
+sudo cp -r $BASE_DIR/etc/glance/* /var/snap/glance/common/etc/glance/
 
 openstack user show glance || {
     openstack user create --domain default --password glance glance
@@ -22,8 +23,6 @@ openstack service show image || {
             image $endpoint http://localhost:9292 || :
     done
 }
-
-sudo cp -r $BASE_DIR/etc/glance/common/* /var/snap/glance/common
 
 sudo glance.manage db_sync
 

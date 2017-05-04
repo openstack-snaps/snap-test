@@ -13,6 +13,11 @@ openstack user show nova || {
     openstack role add --project service --user nova admin
 }
 
+openstack user show placement || {
+    openstack user create --domain default --password placement placement
+    openstack role add --project service --user placement admin
+}
+
 openstack service show compute || {
     openstack service create --name nova \
       --description "OpenStack Compute" compute
@@ -22,6 +27,17 @@ openstack service show compute || {
           compute $endpoint http://localhost:8774/v2.1/%\(tenant_id\)s || :
     done
 }
+
+openstack service show placement || {
+    openstack service create --name placement \
+      --description "Placement API" placement
+
+    for endpoint in public internal admin; do
+        openstack endpoint create --region RegionOne \
+          placement $endpoint http://localhost:8778 || :
+    done
+}
+
 
 while [ ! -d /var/snap/nova/common/etc/nova/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/nova/* /var/snap/nova/common/etc/nova/

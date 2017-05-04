@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q neutron || {
-    sudo snap install --edge neutron
+    sudo snap install --edge --classic neutron
 }
 
 openstack user show neutron || {

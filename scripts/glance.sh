@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q glance || {
-    sudo snap install --edge glance
+    sudo snap install --edge --classic glance
 }
 
 while [ ! -d /var/snap/glance/common/etc/glance/ ]; do sleep 0.1; done;

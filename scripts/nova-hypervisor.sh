@@ -17,3 +17,5 @@ sudo systemctl restart snap.nova-hypervisor.*
 
 # Needs support in snap.openstack for perms on directories created.
 sudo chmod a+rx /var/snap/nova-hypervisor/common/instances
+
+sudo nova.manage cell_v2 discover_hosts --verbose

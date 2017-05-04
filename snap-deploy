@@ -12,7 +12,7 @@ DEBIAN_FRONTEND='noninteractive' sudo -E apt install --yes python3-openstackclie
 SCRIPT=$(readlink -f $0)
 export BASE_DIR=$(dirname $SCRIPT)
 
-scripts="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
+scripts="rabbitmq database keystone nova neutron glance nova-hypervisor neutron-ext-net"
 
 sudo snap install core
 

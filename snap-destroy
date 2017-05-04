@@ -9,5 +9,6 @@ for snap in $snaps; do
 done
 
 sudo apt-get --yes remove --purge *mysql\*
+sudo apt-get --yes remove --purge rabbitmq-server
 sudo apt-get --yes autoremove
 sudo apt-get --yes autoclean

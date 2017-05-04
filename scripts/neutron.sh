@@ -23,7 +23,7 @@ openstack service show network || {
     done
 }
 
-while [ ! -d /var/snap/neutron/common/etc/neutron/ ]; do sleep 0.1; done;
+while sudo [ ! -d /var/snap/neutron/common/etc/neutron/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/neutron/* /var/snap/neutron/common/etc/neutron/
 
 sudo neutron.manage upgrade head

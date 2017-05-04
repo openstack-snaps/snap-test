@@ -39,7 +39,7 @@ openstack service show placement || {
 }
 
 
-while [ ! -d /var/snap/nova/common/etc/nova/ ]; do sleep 0.1; done;
+while sudo [ ! -d /var/snap/nova/common/etc/nova/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/nova/* /var/snap/nova/common/etc/nova/
 
 sudo nova.manage api_db sync

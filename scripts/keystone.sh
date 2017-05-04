@@ -8,7 +8,7 @@ snap list | grep -q keystone || {
     sudo snap install --edge --classic keystone
 }
 
-while [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;
+while sudo [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/keystone/* /var/snap/keystone/common/etc/keystone/
 
 sudo keystone.manage fernet_setup --keystone-user root --keystone-group root

@@ -5,7 +5,7 @@ set -x
 snaps="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
 
 for snap in $snaps; do
-    snap remove $snap
+    sudo snap remove $snap
 done
 
 sudo mysql -u root << EOF

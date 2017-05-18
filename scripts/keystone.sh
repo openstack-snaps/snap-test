@@ -11,7 +11,7 @@ snap list | grep -q keystone || {
 while sudo [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/keystone/* /var/snap/keystone/common/etc/keystone/
 
-sudo keystone.manage fernet_setup --keystone-user root --keystone-group root
+sudo keystone.manage fernet_setup --keystone-user snap-keystone --keystone-group snap-keystone
 sudo keystone.manage db_sync
 
 sudo systemctl restart snap.keystone.*

@@ -9,7 +9,7 @@ snap list | grep -q glance || {
 }
 
 while sudo [ ! -d /var/snap/glance/common/etc/glance/ ]; do sleep 0.1; done;
-sudo cp -r $BASE_DIR/etc/glance/* /var/snap/glance/common/etc/glance/
+sudo cp -r $BASE_DIR/etc/snap-glance/* /var/snap/glance/common/etc/
 
 openstack user show glance || {
     openstack user create --domain default --password glance glance

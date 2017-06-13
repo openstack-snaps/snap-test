@@ -40,7 +40,7 @@ openstack service show placement || {
 
 
 while sudo [ ! -d /var/snap/nova/common/etc/nova/ ]; do sleep 0.1; done;
-sudo cp -r $BASE_DIR/etc/nova/* /var/snap/nova/common/etc/nova/
+sudo cp -r $BASE_DIR/etc/snap-nova/* /var/snap/nova/common/etc/
 
 sudo nova.manage api_db sync
 sudo nova.manage cell_v2 list_cells | grep cell0 || sudo nova.manage cell_v2 map_cell0

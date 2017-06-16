@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q "^nova-hypervisor\s" || {
-    sudo snap install --edge --classic nova-hypervisor
+    sudo snap install --edge nova-hypervisor
 }
 
 while sudo [ ! -d /var/snap/nova-hypervisor/common/etc/neutron/ ]; do sleep 0.1; done;

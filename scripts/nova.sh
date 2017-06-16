@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q "^nova\s" || {
-    sudo snap install --edge --classic nova
+    sudo snap install --edge nova
 }
 
 openstack user show nova || {

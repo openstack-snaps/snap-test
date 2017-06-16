@@ -5,13 +5,13 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q keystone || {
-    sudo snap install --edge --classic keystone
+    sudo snap install --edge keystone
 }
 
 while sudo [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/snap-keystone/* /var/snap/keystone/common/etc/
 
-sudo keystone.manage fernet_setup --keystone-user snap-keystone --keystone-group snap-keystone
+sudo keystone.manage fernet_setup --keystone-user root --keystone-group root
 sudo keystone.manage db_sync
 
 sudo systemctl restart snap.keystone.*

@@ -25,5 +25,6 @@ while sudo [ ! -d /var/snap/nova-hypervisor/common/etc/nova/ ]; do sleep 0.1; do
 sudo cp -r $BASE_DIR/etc/snap-nova-hypervisor/* /var/snap/nova-hypervisor/common/etc/
 
 sudo systemctl restart snap.nova-hypervisor.*
+sudo systemctl restart snap.nova-hypervisor.nova-compute
 
 sudo nova.manage cell_v2 discover_hosts --verbose

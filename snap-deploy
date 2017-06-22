@@ -7,7 +7,7 @@ set -ex
 
 sudo apt update
 DEBIAN_FRONTEND='noninteractive' sudo -E apt install --yes python3-openstackclient rabbitmq-server mysql-server \
-    memcached libvirt-bin qemu-kvm apparmor-utils python-neutronclient openvswitch-switch dnsmasq-utils
+    memcached libvirt-bin qemu-kvm apparmor-utils python-neutronclient openvswitch-switch
 
 # See https://bugs.launchpad.net/ubuntu/+source/libvirt/+bug/1644507
 sudo aa-complain /usr/lib/libvirt/virt-aa-helper

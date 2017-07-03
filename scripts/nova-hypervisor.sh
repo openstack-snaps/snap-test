@@ -10,7 +10,6 @@ snap list | grep -q "^nova-hypervisor\s" || {
 
 # NOTE(coreycb): These are temporary until the nova-hypervisor snap gets
 # auto-connect support in the snap store for these interfaces.
-sudo snap connect nova-hypervisor:system-trace core:system-trace
 sudo snap connect nova-hypervisor:hardware-observe core:hardware-observe
 sudo snap connect nova-hypervisor:system-observe core:system-observe
 sudo snap connect nova-hypervisor:process-control core:process-control

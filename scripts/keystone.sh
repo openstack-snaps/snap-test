@@ -11,13 +11,13 @@ snap list | grep -q keystone || {
 while sudo [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/snap-keystone/* /var/snap/keystone/common/etc/
 
-sudo keystone.manage fernet_setup --keystone-user root --keystone-group root
-sudo keystone.manage db_sync
+sudo keystone-manage fernet_setup --keystone-user root --keystone-group root
+sudo keystone-manage db_sync
 
 sudo systemctl restart snap.keystone.*
 
 openstack user show admin || {
-    sudo keystone.manage bootstrap \
+    sudo keystone-manage bootstrap \
         --bootstrap-password keystone \
         --bootstrap-admin-url http://localhost:35357/v3/ \
         --bootstrap-internal-url http://localhost:35357/v3/ \

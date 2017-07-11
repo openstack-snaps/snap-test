@@ -24,7 +24,7 @@ openstack service show image || {
     done
 }
 
-sudo glance.manage db_sync
+sudo glance-manage db_sync
 
 sudo systemctl restart snap.glance.*
 

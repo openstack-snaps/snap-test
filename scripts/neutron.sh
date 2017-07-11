@@ -26,7 +26,7 @@ openstack service show network || {
 while sudo [ ! -d /var/snap/neutron/common/etc/neutron/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/snap-neutron/* /var/snap/neutron/common/etc/
 
-sudo neutron.manage upgrade head
+sudo neutron-db-manage upgrade head
 
 sudo systemctl restart snap.neutron.*
 

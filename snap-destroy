@@ -2,8 +2,8 @@
 
 set -x
 
-sudo nova-hypervisor.neutron-ovs-cleanup
-sudo nova-hypervisor.neutron-netns-cleanup
+sudo neutron-ovs-cleanup
+sudo neutron-netns-cleanup
 
 snaps="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
 

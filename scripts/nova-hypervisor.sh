@@ -24,4 +24,8 @@ sudo cp -r $BASE_DIR/etc/snap-nova-hypervisor/* /var/snap/nova-hypervisor/common
 sudo systemctl restart snap.nova-hypervisor.*
 sudo systemctl restart snap.nova-hypervisor.nova-compute
 
+# Manually define alias if snap isn't installed from snap store.
+# Otherwise, snap store defines this alias automatically.
+snap aliases nova | grep nova-manage || sudo snap alias nova.manage nova-manage
+
 sudo nova-manage cell_v2 discover_hosts --verbose

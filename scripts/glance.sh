@@ -24,6 +24,10 @@ openstack service show image || {
     done
 }
 
+# Manually define alias if snap isn't installed from snap store.
+# Otherwise, snap store defines this alias automatically.
+snap aliases glance | grep glance-manage || sudo snap alias glance.manage glance-manage
+
 sudo glance-manage db_sync
 
 sudo systemctl restart snap.glance.*

@@ -7,7 +7,7 @@ set -ex
 
 sudo apt update
 DEBIAN_FRONTEND='noninteractive' sudo -E apt install --yes python3-openstackclient rabbitmq-server mysql-server \
-    memcached libvirt-bin qemu-kvm apparmor-utils python-neutronclient openvswitch-switch
+    memcached libvirt-bin qemu-kvm apparmor-utils python-neutronclient openvswitch-switch tgt
 
 # See https://bugs.launchpad.net/ubuntu/+source/libvirt/+bug/1644507
 sudo aa-complain /usr/lib/libvirt/virt-aa-helper
@@ -15,6 +15,8 @@ sudo aa-complain /usr/lib/libvirt/virt-aa-helper
 SCRIPT=$(readlink -f $0)
 export BASE_DIR=$(dirname $SCRIPT)
 
+#NOTE(coreycb): Enable cinder once it's published to snap store
+#scripts="rabbitmq database keystone nova neutron glance cinder nova-hypervisor neutron-ext-net"
 scripts="rabbitmq database keystone nova neutron glance nova-hypervisor neutron-ext-net"
 
 sudo snap install core

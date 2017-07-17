@@ -12,7 +12,7 @@ snap aliases nova-hypervisor | grep neutron-netns-cleanup || \
 sudo neutron-ovs-cleanup
 sudo neutron-netns-cleanup
 
-snaps="database keystone nova neutron glance nova-hypervisor neutron-ext-net"
+snaps="database keystone nova neutron glance cinder nova-hypervisor neutron-ext-net"
 
 for snap in $snaps; do
     sudo snap remove $snap
@@ -29,3 +29,10 @@ DROP DATABASE cinder;
 EOF
 
 sudo rabbitmqctl delete_user openstack
+
+# Clean up the cinder volume group and file-based loopback device
+sudo lvremove -f cinder-volumes
+sudo vgremove -f cinder-volumes
+loop_dev=$(sudo losetup -j /var/cinder/cinder-volumes-file | awk -F':' '/'cinder-volumes-file'/ { print $1}')
+[ -n $loop_dev ] || sudo losetup -d $loop_dev
+[ -e /var/cinder/cinder-volumes-file ] && sudo rm /var/cinder/cinder-volumes-file

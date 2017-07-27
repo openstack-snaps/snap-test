@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q "^nova-hypervisor\s" || {
-    sudo snap install --edge nova-hypervisor
+    sudo snap install --channel=ocata/edge nova-hypervisor
 }
 
 # Manually connect interfaces if snap isn't installed from snap store.

@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q "^nova\s" || {
-    sudo snap install --edge nova
+    sudo snap install --channel=ocata/edge nova
 }
 
 openstack user show nova || {

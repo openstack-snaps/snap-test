@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q keystone || {
-    sudo snap install --edge keystone
+    sudo snap install --channel=ocata/edge keystone
 }
 
 while sudo [ ! -d /var/snap/keystone/common/etc/keystone/ ]; do sleep 0.1; done;

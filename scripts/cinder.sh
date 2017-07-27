@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q cinder || {
-    sudo snap install --edge cinder
+    sudo snap install --channel=ocata/edge cinder
 }
 
 while sudo [ ! -d /var/snap/cinder/common/etc/cinder/ ]; do sleep 0.1; done;

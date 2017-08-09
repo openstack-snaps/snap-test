@@ -5,7 +5,7 @@ set -ex
 source $BASE_DIR/admin-openrc
 
 snap list | grep -q glance || {
-    edgudo snap install --channel=ocata/edge glance
+    sudo snap install --channel=ocata/edge glance
 }
 
 while sudo [ ! -d /var/snap/glance/common/etc/glance/ ]; do sleep 0.1; done;
